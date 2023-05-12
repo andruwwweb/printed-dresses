@@ -21,6 +21,7 @@ import nextSlide from './assets/next-slide.svg'
 import prevSlide from './assets/prev-slide.svg'
 import Swiper, { Navigation, Pagination } from 'swiper';
 import 'swiper/css';
+import { set } from 'lodash'
 
 document.addEventListener('DOMContentLoaded', () => {
 
@@ -46,6 +47,19 @@ document.addEventListener('DOMContentLoaded', () => {
         nextEl: '.swiper-button-next-prod',
         prevEl: '.swiper-button-prev-prod',
         },
+        breakpoints: {
+            992: {
+                slidesPerView: 3,
+                spaceBetween: 10,
+            },
+            1200: {
+                slidesPerView: 3,
+                spaceBetween: 30,
+            },
+            1440: {
+                slidesPerView: 4,
+            }
+        }
     });
 
     const productItem = new Swiper('.item_swiper', {
@@ -67,4 +81,6 @@ document.addEventListener('DOMContentLoaded', () => {
             btn.classList.toggle('add_to_fav_icon_active')
         })
     })
+
+
 })
