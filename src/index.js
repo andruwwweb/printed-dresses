@@ -19,6 +19,7 @@ import prod4 from "./assets/prod4.png"
 import blackArrow from "./assets/black-arrow.png"
 import nextSlide from './assets/next-slide.svg'
 import prevSlide from './assets/prev-slide.svg'
+import line from './assets/line.svg'
 import Swiper, { Navigation, Pagination } from 'swiper';
 import 'swiper/css';
 import { set } from 'lodash'
@@ -48,6 +49,16 @@ document.addEventListener('DOMContentLoaded', () => {
         prevEl: '.swiper-button-prev-prod',
         },
         breakpoints: {
+            320: {
+                slidesPerView: 1,
+            },
+            576: {
+                slidesPerView: 1,
+            },
+            768: {
+                slidesPerView: 2,
+                spaceBetween: 20,
+            },
             992: {
                 slidesPerView: 3,
                 spaceBetween: 10,
@@ -81,6 +92,33 @@ document.addEventListener('DOMContentLoaded', () => {
             btn.classList.toggle('add_to_fav_icon_active')
         })
     })
+
+    const burger = document.querySelector('.burger')
+    const nav = document.querySelector('.nav')
+
+    burger.addEventListener('click', (e) => {
+        e.preventDefault()
+        burger.classList.toggle('justify_burger')
+        nav.classList.toggle('nav_active')
+        toCross()
+    })
+
+    const burgerChildren = document.querySelectorAll('.burger img')
+    function toCross() {
+        burgerChildren.forEach((item, i) => {
+            switch (i) {
+            case 0: 
+                item.classList.toggle('child_0')
+                break
+            case 1:
+                item.classList.toggle('child_1')
+                break
+            case 2:
+                item.classList.toggle('child_2')
+                break
+            }
+        })
+    }
 
 
 })
